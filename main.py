@@ -76,7 +76,7 @@ def main() -> None:
     contacts = fetch_contacts(supabase)
 
     if not contacts:
-        logger.warning("Erro: Nenhum contato encontrado, Encerrando...")
+        logger.warning("Nenhum contato encontrado, Encerrando.")
         return
     
     success_count = 0
@@ -91,7 +91,7 @@ def main() -> None:
         message = f"Olá, {name} tudo bem com você?"
         logger.info(f"Enviando mensagem para {name} ({phone})...")
 
-        if(send_wpp_message(phone, message)):
+        if send_wpp_message(phone, message):
             success_count += 1
     
     logger.info(f"Concluído - {success_count}/{len(contacts)} mensagem(ns) enviada(s) com sucesso.")
